@@ -15,17 +15,28 @@ namespace Xunit
         /// Verifies that an Option is in the None state
         /// </summary>
         /// <param name="value">The Option to be assessed</param>        
-        /// <exception cref="NoneException">Thrown when the sub-string is not present inside the string</exception>
+        /// <exception cref="NoneException">Thrown when the Option is in the Some state</exception>
         public static void None<T>(Option<T> value) =>
             value.Match(
                 Some: x => throw new NoneException(),
                 None: () => unit);
 
+        /// <summary>
+        /// Verifies that an Option is in the Some state
+        /// </summary>
+        /// <param name="value">The Option to be assessed</param>        
+        /// <exception cref="SomeException">Thrown when the Option is in the None state</exception>
         public static void Some<T>(Option<T> value) =>
             value.Match(
                 Some: identity,
                 None: () => throw new SomeException());
 
+        /// <summary>
+        /// Verifies that an Option is in the Some state and the value matches the expectation
+        /// </summary>
+        /// <param name="value">The Option to be assessed</param>        
+        /// <exception cref="SomeException">Thrown when the Option is in the None state</exception>
+        /// <exception cref="EqualException">Thrown when the Option value does not match</exception>
         public static void Some<T>(T expected, Option<T> actual) =>
             actual.Match(
                 Some: x => Equal(expected, x),
