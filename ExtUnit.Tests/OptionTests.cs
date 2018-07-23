@@ -9,34 +9,34 @@ namespace ExtUnit.Tests
     public class OptionTests
     {
         [Fact]
-        public void IsNone_Pass() =>
+        public void None_Pass() =>
             Assert.None(Option<string>.None);
 
         [Fact]
-        public void IsNone_Fail() =>
+        public void None_Fail() =>
             Assert.Throws<NoneException>(
                 () => Assert.None(Optional("1234")));
 
         [Fact]
-        public void IsSome_Pass() =>
+        public void Some_Pass() =>
             Assert.Some(Optional("1234"));
 
         [Fact]
-        public void IsSome_Fail() =>
+        public void Some_Fail() =>
             Assert.Throws<SomeException>(
                 () => Assert.Some(Option<string>.None));
 
         [Fact]
-        public void IsSome_WithExpectation_Pass() =>
+        public void Some_WithExpectation_Pass() =>
             Assert.Some("1234", Optional("1234"));
 
         [Fact]
-        public void IsSome_WithNone_Fail() =>
+        public void Some_WithNone_Fail() =>
             Assert.Throws<SomeException>(
                 () => Assert.Some("1234", Option<string>.None));
 
         [Fact]
-        public void IsSome_WithIncorrectExpectation_Fail() =>
+        public void Some_WithIncorrectExpectation_Fail() =>
             Assert.Throws<EqualException>(
                 () => Assert.Some("1234", Optional("5678")));
     }
