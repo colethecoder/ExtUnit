@@ -58,9 +58,9 @@ namespace Xunit
             value.Match(
                 Some: x => throw new FailureException(),
                 None: () => throw new FailureException(),
-                Fail: x => x.GetType().GetTypeInfo().IsAssignableFrom(typeof(U)) 
+                Fail: x => exceptionIs<U>(x) 
                             ? x
-                            : fun<Exception>(() => throw new FailureException())());
+                            : raise<Exception>(new FailureException()));
 
     }
 }

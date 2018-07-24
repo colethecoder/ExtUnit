@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="languageext.core" Version="3.0.19" />
+    <PackageReference Include="languageext.core" Version="3.0.20" />
     <PackageReference Include="xunit.core" Version="2.4.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
