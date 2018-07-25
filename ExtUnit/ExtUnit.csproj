@@ -6,7 +6,6 @@
     <Authors>colethecoder</Authors>
     <Company />
     <Product />
-    <Version>$version$</Version>
   </PropertyGroup>
 
   <ItemGroup>
