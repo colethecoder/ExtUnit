@@ -12,7 +12,7 @@ PM> Install-Package languageext.core
 PM> Install-Package extunit
 ```
 
-Note: you ExtUnit extends xunit.asserts so you need to use xunit.core and not the main xunit package (which would include xunit.asserts).
+Note: ExtUnit extends xunit.asserts so you need to use xunit.core and not the main xunit package (which would include xunit.asserts).
 
 ## Example
 
