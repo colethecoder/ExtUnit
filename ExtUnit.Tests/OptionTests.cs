@@ -39,5 +39,14 @@ namespace ExtUnit.Tests
         public void Some_WithIncorrectExpectation_Fail() =>
             Assert.Throws<EqualException>(
                 () => Assert.Some("1234", Optional("5678")));
+
+        [Fact]
+        public void Some_WithCorrectAsserts_Pass() =>
+            Assert.Some(Optional(1234), x => Assert.InRange(x, 1, 9999));
+
+        [Fact]
+        public void Some_WithIncorrectAsserts_Fail() =>
+            Assert.Throws<InRangeException>(
+                () => Assert.Some(Optional(1234), x => Assert.InRange(x, 1, 999)));
     }
 }

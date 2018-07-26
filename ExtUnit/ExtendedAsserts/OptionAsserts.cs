@@ -1,6 +1,7 @@
 ﻿using LanguageExt;
 using static LanguageExt.Prelude;
 using Xunit.Sdk;
+using System;
 
 namespace Xunit
 {
@@ -40,6 +41,11 @@ namespace Xunit
         public static void Some<T>(T expected, Option<T> actual) =>
             actual.Match(
                 Some: x => Equal(expected, x),
+                None: () => throw new SomeException());
+
+        public static void Some<T>(Option<T> value, Action<T> asserts) =>
+            value.Match(
+                Some: x => asserts(x),
                 None: () => throw new SomeException());
 
     }
