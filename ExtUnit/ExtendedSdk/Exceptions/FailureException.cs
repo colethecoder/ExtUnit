@@ -1,20 +1,20 @@
 ﻿namespace Xunit.Sdk
 {
     /// <summary>
-    /// Exception thrown when TryOption unexpectedly has a value or is none.
+    /// Exception thrown when Try or TryOption is not in a Fail state.
     /// </summary>
 #if XUNIT_VISIBILITY_INTERNAL
     internal
 #else
     public
 #endif
-    class FailureException : XunitException
+    class FailException : XunitException
     {
         /// <summary>
-        /// Creates a new instance of the <see cref="FailureException"/> class.
+        /// Creates a new instance of the <see cref="FailException"/> class.
         /// </summary>
-        public FailureException()
-            : base("Assert.Failure() Failure")
+        public FailException()
+            : base("Assert.Fail() Failure")
         { }
     }
 }

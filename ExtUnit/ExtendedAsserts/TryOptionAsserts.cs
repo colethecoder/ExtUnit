@@ -48,19 +48,19 @@ namespace Xunit
                 Fail: x => throw new SomeException());
 
 
-        public static void Failure<T>(TryOption<T> value) =>
+        public static void Fail<T>(TryOption<T> value) =>
             value.Match(
-                Some: x => throw new FailureException(),
-                None: () => throw new FailureException(),
+                Some: x => throw new FailException(),
+                None: () => throw new FailException(),
                 Fail: identity);
 
-        public static void Failure<T, U>(TryOption<T> value) where U : Exception =>
+        public static void Fail<T, U>(TryOption<T> value) where U : Exception =>
             value.Match(
-                Some: x => throw new FailureException(),
-                None: () => throw new FailureException(),
+                Some: x => throw new FailException(),
+                None: () => throw new FailException(),
                 Fail: x => exceptionIs<U>(x) 
                             ? x
-                            : raise<Exception>(new FailureException()));
+                            : raise<Exception>(new FailException()));
 
     }
 }

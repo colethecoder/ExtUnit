@@ -24,12 +24,12 @@ namespace Xunit
 
         public static void Fail<T, U>(Validation<T, U> value) =>
             value.Match(
-                Succ: x => throw new FailureException(),
+                Succ: x => throw new FailException(),
                 Fail: x => unit);
 
         public static void Fail<T, U>(Validation<T, U> value, Action<Seq<T>> assertAction) =>
             value.Match(
-                Succ: x => throw new FailureException(),
+                Succ: x => throw new FailException(),
                 Fail: x => assertAction(x));
 
         public static void FailContains<T, U>(T expected, Validation<T, U> value) =>

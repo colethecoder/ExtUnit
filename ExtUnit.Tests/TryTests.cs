@@ -1,5 +1,4 @@
 ﻿using LanguageExt;
-using static LanguageExt.Prelude;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,16 +7,13 @@ using Xunit.Sdk;
 
 namespace ExtUnit.Tests
 {
-    public class TryOptionTests
+    public class TryTests
     {
-        private TryOption<string> SampleFail() => () =>
+        private Try<string> SampleFail() => () =>
             throw new NotImplementedException();
 
-        private TryOption<string> SampleNone() => () =>
-            Option<string>.None;
-
-        private TryOption<string> SampleSome() => () =>
-            Optional("1234");
+        private Try<string> SampleSome() => () =>
+            "1234";
 
         [Fact]
         public void Fail_Passes() =>
@@ -33,14 +29,8 @@ namespace ExtUnit.Tests
                 () => Assert.Fail<string, NullReferenceException>(SampleFail()));
 
         [Fact]
-        public void Fail_WithNone_Fails() =>
-            Assert.Throws<FailException>(
-                () => Assert.Fail(SampleNone()));
-
-        [Fact]
-        public void Fail_WithSome_Fails() =>
+        public void Fail_WithValue_Fails() =>
             Assert.Throws<FailException>(
                 () => Assert.Fail(SampleSome()));
-
     }
 }
