@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/b37oweyehdycqs97?svg=true)](https://ci.appveyor.com/project/colethecoder/ExtUnit/branch/master)
+
 # ExtUnit
 
 A tiny library that provides some helpful extensions when using [XUnit](https://github.com/xunit/xunit) with [LanguageExt](https://github.com/louthy/language-ext).
